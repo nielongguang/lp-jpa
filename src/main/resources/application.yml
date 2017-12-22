@@ -1,0 +1,61 @@
+server:
+    port: 8082
+
+#spring
+spring:
+  devtools:
+    restart:
+      enabled: true
+
+#spring.freemarker.cache= # Enable template caching.
+#spring.thymeleaf.enabled=true # Enable MVC Thymeleaf view resolution.
+#spring.velocity.cache= # Enable template caching.
+
+
+  datasource:
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@//10.28.0.131:1521/amic121
+      username: reserve_mid
+      password: reserve_mid
+      type: com.alibaba.druid.pool.DruidDataSource
+      initialize: true
+      dbcp2:
+        initial-size: 5
+        min-evictable-idle-time-millis: 30000
+        test-on-borrow: false
+        test-while-idle: true
+        enable-auto-commit-on-return: false
+        pool-prepared-statements: true
+        max-open-prepared-statements: 20
+  jpa:
+    database: oracle
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+  jooq:
+    sql-dialect: org.hibernate.dialect.Oracle10gDialect
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+#      filters: stat,wall,logback
+#      maxActive: 30
+#      initialSize: 10
+#      maxWait: 60000
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      validationQuery: SELECT 'x' from dual
+#      testWhileIdle: true
+#      testOnBorrow: false
+#      testOnReturn: false
+#      poolPreparedStatements: true
+#      maxOpenPreparedStatements: 20
+#      removeAbandoned: true
+#      removeAbandonedTimeout: 1800
+#      connection-properties: druid.stat.merggSql=ture;druid.stat.slowSqlMillis=5000
